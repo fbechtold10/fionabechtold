@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fiona Bechtold — Biomedical Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-light: #f8fafc;
+      --navy: #0f172a;
+      --muted-blue: #64748b;
+      --accent-blue: #2563eb;
+      --accent-soft: #f1f5f9;
+      --rule: #e2e8f0;
+      --card-bg: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-light);
+      color: var(--navy);
+      line-height: 1.6;
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(248, 250, 252, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-logo { font-weight: 700; text-decoration: none; color: var(--navy); font-size: 1rem; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--navy); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent-blue); }
+
+    /* ── HERO ── */
+    .hero { padding: 12rem 4rem 6rem; max-width: 1000px; }
+    .hero-eyebrow { color: var(--accent-blue); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; font-size: 0.75rem; }
+    h1 { font-weight: 700; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; letter-spacing: -0.04em; margin-bottom: 1.5rem; }
+    .hero-bio { font-family: 'IBM Plex Sans', sans-serif; font-size: 1.2rem; color: var(--muted-blue); max-width: 600px; }
+
+    /* ── PROJECT GRID ── */
+    #projects { padding: 2rem 4rem 6rem; }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 2.5rem;
+    }
+
+    /* Card is now a Link (<a>) */
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      overflow: hidden;
+      text-decoration: none; /* Removes underline from links */
+      color: inherit;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover { 
+      border-color: var(--accent-blue); 
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
+    }
+
+    .project-thumb { width: 100%; height: 240px; object-fit: cover; background: var(--accent-soft); transition: transform 0.4s; }
+    .project-card:hover .project-thumb { transform: scale(1.05); }
+
+    .project-info { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
+    .project-category { font-size: 0.7rem; color: var(--accent-blue); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+    .project-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .project-snippet { color: var(--muted-blue); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+    .view-label { font-size: 0.8rem; font-weight: 700; color: var(--accent-blue); text-transform: uppercase; margin-top: auto; display: flex; align-items: center; gap: 0.5rem; }
+
+    /* ── CONTACT ── */
+    #contact { padding: 8rem 4rem; background: var(--navy); color: white; text-align: center; }
+    #contact h2 { font-size: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .btn-primary { background: var(--accent-blue); color: white; padding: 0.9rem 2.5rem; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: 600; transition: background 0.2s; }
+    .btn-primary:hover { background: #1e40af; }
+
+    @media (max-width: 768px) {
+      nav, .hero, #projects, #contact { padding: 2rem 1.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">FIONA BECHTOLD</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="pdfs/Resume.pdf" class="btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.75rem;">Resume</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-eyebrow">Biomedical Engineering Portfolio</div>
+    <h1>Fiona Bechtold</h1>
+    <p class="hero-bio">
+      University of Victoria · Graduating August 2026
+    </p>
+  </section>
+
+  <section id="projects">
+    <div class="projects-grid">
+      <a href="projects/goniometer.html" class="project-card">
+        <img src="images/goniometer-cad.jpg" class="project-thumb" alt="Goniometer">
+        <div class="project-info">
+          <div class="project-category">Medical Device Design</div>
+          <h3 class="project-title">Goniometer Redesign</h3>
+          <p class="project-snippet">Partnership with Victoria General Hospital to improve wrist range-of-motion measurement accuracy.</p>
+          <div class="view-label">View Project Details →</div>
+        </div>
+      </a>
+      
+      <a href="projects/fnirs.html" class="project-card">
+        <img src="images/fnirs-thumb.jpg" class="project-thumb" alt="fNIRS Project">
+        <div class="project-info">
+          <div class="project-category">Capstone · Neurotech</div>
+          <h3 class="project-title">fNIRS System Optimization</h3>
+          <p class="project-snippet">Low-cost neurofeedback prototype utilizing dual-wavelength NIR spectroscopy and ESP32 firmware.</p>
+          <div class="view-label">View Project Details →</div>
+        </div>
+      </a>
+
+      <a href="projects/unet.html" class="project-card">
+        <img src="images/evaluationresults.jpg" class="project-thumb" alt="U-Net">
+        <div class="project-info">
+          <div class="project-category">Deep Learning</div>
+          <h3 class="project-title">U-Net Neuron Segmentation</h3>
+          <p class="project-snippet">Automated dendritic shaft segmentation in TEM brain imagery using PyTorch and 2D U-Net architectures.</p>
+          <div class="view-label">View Project Details →</div>
+        </div>
+      </a>
+
+      <a href="projects/fsae.html" class="project-card">
+        <img src="images/fsae-thumb.jpg" class="project-thumb" alt="FSAE">
+        <div class="project-info">
+          <div class="project-category">Structural Engineering</div>
+          <h3 class="project-title">FSAE Suspension Redesign</h3>
+          <p class="project-snippet">Weight optimization for UVic Formula Racing using topology optimization and FEA analysis.</p>
+          <div class="view-label">View Project Details →</div>
+        </div>
+      </a>
+
+      
+
+      <a href="projects/swan-lake.html" class="project-card">
+        <img src="images/swan-thumb.jpg" class="project-thumb" alt="Swan Lake">
+        <div class="project-info">
+          <div class="project-category">IoT · Conservation</div>
+          <h3 class="project-title">Visitor Monitoring System</h3>
+          <p class="project-snippet">Embedded traffic monitoring solution for the Swan Lake Nature Sanctuary.</p>
+          <div class="view-label">View Project Details →</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Let's connect.</h2>
+    <p style="margin-bottom: 2rem; opacity: 0.8;">Currently seeking opportunities in clinical engineering and medical device design.</p>
+    <a href="mailto:fbechtold10@gmail.com" class="btn-primary">Email Me</a>
+  </section>
+
+</body>
+</html>

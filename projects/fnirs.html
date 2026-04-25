@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fNIRS System — Fiona Bechtold</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-light: #f8fafc;
+            --navy: #0f172a;
+            --accent-blue: #2563eb;
+            --rule: #e2e8f0;
+            --text-muted: #64748b;
+        }
+        body { font-family: 'Inter', sans-serif; background: white; color: var(--navy); margin: 0; line-height: 1.7; }
+        
+        /* ── Header ── */
+        .container { max-width: 900px; margin: 0 auto; padding: 6rem 2rem; }
+        .back-link { text-decoration: none; color: var(--accent-blue); font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 3rem; }
+        
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -0.04em; margin-bottom: 1.5rem; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; margin-bottom: 4rem; padding-bottom: 2rem; border-bottom: 1px solid var(--rule); }
+        .meta-item h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .meta-item p { margin: 0; font-weight: 500; font-size: 0.95rem; }
+
+        /* ── Content ── */
+        .hero-img { width: 100%; border-radius: 12px; margin-bottom: 4rem; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        
+        .section { margin-bottom: 5rem; }
+        h2 { font-size: 1.8rem; letter-spacing: -0.02em; margin-bottom: 1.5rem; border-left: 4px solid var(--accent-blue); padding-left: 1.5rem; }
+        p { font-size: 1.1rem; color: #334155; margin-bottom: 1.5rem; }
+        
+        /* ── Layout Tools ── */
+        .grid-4 { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); /* Creates 4 equal columns */
+            gap: 1rem; 
+            margin: 3rem 0; 
+            }
+
+        .grid-4 img { 
+            width: 100%; 
+            height: 180px;      /* Reduced height so they don't look too tall and skinny */
+            object-fit: cover;  /* Keeps the focus on the center of the photo */
+            border-radius: 6px; 
+            border: 1px solid var(--rule); 
+            }
+
+        .grid-caption {
+            font-size: 0.75rem; /* Smaller text for the tighter space */
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            line-height: 1.3;
+        }
+
+        /* Ensure that on mobile (phones), they stack 2x2 or 1x1 so they aren't microscopic */
+        @media (max-width: 768px) { 
+            .grid-4 { grid-template-columns: 1fr 1fr; } 
+        }
+        @media (max-width: 480px) { 
+            .grid-4 { grid-template-columns: 1fr; } 
+        }
+
+        
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; margin: 3rem 0; background: #000; border-radius: 12px; overflow: hidden; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        .chip-group { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .chip { background: var(--bg-light); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; color: var(--accent-blue); }
+
+        @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="../index.html" class="back-link">← Back to Projects</a>
+    
+    <h1>fNIRS System Optimization for Clinical Implementation</h1>
+    
+    <div class="meta-grid">
+    <div class="meta-item">
+        <h4>Role</h4>
+        <p>Lead Hardware Developer</p>
+    </div>
+    <div class="meta-item">
+        <h4>Context</h4>
+        <p>BME Capstone Project</p>
+    </div>
+    <div class="meta-item">
+        <h4>See More</h4>
+        <a href="../pdfs/fNIRSposter.pdf" target="_blank" class="btn-outline">View Project Poster ↗</a>
+    </div>
+    <div class="meta-item">
+        <h4>Timeline</h4>
+        <p>Jan — Aug 2026</p>
+    </div>
+</div>
+
+    <div class="section">
+        <h2>Summary</h2>
+        <p>Neurofeedback training is a promising rehabilitation technique for patients with degraded motor function.
+            Existing fNIRS systems capable of supporting it are expensive, research-oriented, and inaccessible
+            to front-line rehabilitation clinics. In collaboration with Western University PhD candidate Fraser MacRae,
+            my team and I designed and built a low-cost fNIRS-based neurofeedback prototype for clinical applications from the ground up.</p>
+    </div>
+
+    <div class="section">
+        <h2>Technical Design</h2>
+        <p>The system integrates a wearable cap with 740nm and 850nm NIR emitters and OPT101 photodiode detectors,
+            an ESP32 microcontroller with custom firmware for LED timing and ADC sampling, signal processing completed by utilizing the modified Beer-Lambert Law, and a dual-interface
+            software application: one for clinicians to manage sessions, and one featuring four interactive
+            neurofeedback games for patients.</p>
+        
+        <div class="grid-4">
+    <div>
+        <img src="../images/cap-full.jpg" alt="Technical features">
+        <p class="grid-caption">Full cap prototype</p>
+    </div>
+    <div>
+        <img src="../images/housing.jpg" alt="In use">
+        <p class="grid-caption">Custom electrical housing</p>
+    </div>
+    <div>
+        <img src="../images/clinicianUI.jpg" alt="Training">
+        <p class="grid-caption">Clinician UI</p>
+    </div>
+    <div>
+        <img src="../images/cad.jpg" alt="Initial prototype">
+        <p class="grid-caption">Cap CAD</p>
+    </div>
+</div>
+    </div>
+
+    <div class="section">
+        <h2>Technical Challenges</h2>
+        <p>Getting a clear signal by eliminating noise from the scalp, hair, and ambient light was a big challenge. Implementing hardware filters, as well as a scalp coupling index (short channel subtraction) in the signal processing improved the signal quality. Additionally, sourcing powerful near-IR LEDs strong enough to produce light that can penetrate the skull was a challenge.</p>
+    </div>
+
+</div>
+
+</body>
+</html>
